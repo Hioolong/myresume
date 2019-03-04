@@ -20,6 +20,7 @@
 <script>
 import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
 import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
 
 export default {
   name: 'app',
@@ -27,6 +28,16 @@ export default {
     return {
       zhCN
     }
+  },
+  methods: {
+    getTestData () {
+      axios.get('/api/index').then( res => {
+        console.log(res);
+      })
+    }
+  },
+  mounted() {
+    this.getTestData();
   },
   components: {
     HelloWorld
